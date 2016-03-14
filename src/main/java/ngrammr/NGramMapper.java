@@ -16,9 +16,12 @@ public class NGramMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
 	@Override
 	public void setup(Context context) {
+		/* Check n parameter from the Generic Options Parser
+		 * This parameter is bounded by MAX_N to avoid unintentional 
+		 * execution of jobs with high GRAM_N.
+		 */
 		Configuration conf = context.getConfiguration();
 		GRAM_N = Integer.parseInt(conf.get("n", "5"));
-		System.out.println("the N for the ngram is: " + conf.get("n"));
 		OVERRIDE_N_LIMIT = Boolean.parseBoolean(conf.get("override", "false"));
 
 		if (GRAM_N > MAX_N && OVERRIDE_N_LIMIT == false) {
