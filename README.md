@@ -8,7 +8,13 @@ by default, and the setting is controlled by the GenericOptionsParser argument
 
 # Example usage
 
-Given an input file that contains the text "to be or not to be"
+Given an input file that contains the text:
+
+```
+to be or not to be
+```
+
+Run the MapReduce Application:
 
 ```
 $ hadoop jar NGramMapReduce.jar NGramDriver -D n=3 /input/path /output/path
@@ -36,3 +42,9 @@ Greater N produces proportionally greater output data relative to input
 data. To avoid unintentional running of jobs that produce excess data
 the N is restricted by default to N = 9. This can be overriden by the
 GenercOptionsParser argument override=true.
+
+# Min Gram
+
+Set the floor on the N Gram loop with the "minG=" argument to 
+GenericOptionsParser to set the minimum length of the N Gram
+tabulations. Defaults to 1.
